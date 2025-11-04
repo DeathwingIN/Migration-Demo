@@ -4,9 +4,21 @@ tableextension 50101 "Item Ext" extends item
     {
         field(50004; "Block Sales Order"; Boolean)
         {
+            InitValue = false;
+
             trigger OnValidate()
             begin
-                // TODO: Add validation logic as per C/AL requirements
+                // TODO: Need to add validation logic with Process Line 
+                // IF xRec."Block Sales Order" <> Rec."Block Sales Order" THEN BEGIN
+                //     ProcessLine.RESET;
+                //     IF ProcessLine.GET(ProcessLine."Document Type"::Quote, Rec."CRM Quote No", Rec."Quote Line No", Rec."Process Line No.") THEN BEGIN
+                //         IF Rec."Block Sales Order" THEN
+                //             ProcessLine."NAV Status" := 'INACTIVE'
+                //         ELSE
+                //             ProcessLine."NAV Status" := 'ACTIVE';
+                //         IF ProcessLine.MODIFY THEN;
+                //     END;
+                // END;
             end;
         }
 
@@ -16,7 +28,6 @@ tableextension 50101 "Item Ext" extends item
 
         field(50063; "EPC"; Boolean)
         {
-            // Used for Notifications
         }
 
         field(50080; "Bake Tag Required"; Boolean)
@@ -29,12 +40,12 @@ tableextension 50101 "Item Ext" extends item
 
         field(50101; "Customer No"; Code[20])
         {
-            // TableRelation = Customer.No;
+            TableRelation = Customer."No.";
         }
 
         field(50103; "Plant Id"; Code[10])
         {
-            // TableRelation = Facility."Plant Id";
+            TableRelation = Facility."Plant Id";
         }
 
         field(50105; "Multi-Process Item"; Boolean)
@@ -49,7 +60,6 @@ tableextension 50101 "Item Ext" extends item
 
         field(50110; "Mechanical Item"; Boolean)
         {
-            // Critical for Print logic
         }
 
         field(50111; "Process Line No."; Integer)
@@ -78,7 +88,7 @@ tableextension 50101 "Item Ext" extends item
         {
             trigger OnValidate()
             begin
-                // Add validation logic as per C/AL requirements
+                // PlantHoldAccess; //TODO: Validation Related to UserPersonalization 
             end;
         }
 
@@ -86,7 +96,7 @@ tableextension 50101 "Item Ext" extends item
         {
             trigger OnValidate()
             begin
-                // Add validation logic as per C/AL requirements
+                // PlantHoldAccess; //TODO: Validation Related to UserPersonalization 
             end;
         }
     }
