@@ -61,7 +61,6 @@ tableextension 50100 "Customer Ext" extends Customer
         {
             Caption = 'Enable Split Order';
             DataClassification = CustomerContent;
-            // Critical for WO logic — ensure any dependent logic is adjusted after porting
         }
 
         field(50045; "Lot based Invoicing"; Boolean)
