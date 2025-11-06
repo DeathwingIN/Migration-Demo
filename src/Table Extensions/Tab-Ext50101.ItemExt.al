@@ -100,4 +100,19 @@ tableextension 50101 "Item Ext" extends item
             end;
         }
     }
+
+    // PlantHoldAccess()
+    // // >> MC10.22
+    // UserPersonalization.RESET;
+    // UserPersonalization.SETRANGE("User ID", USERID);
+    // IF UserPersonalization.FINDFIRST THEN BEGIN
+    //   IF NOT (
+    //     (UserPersonalization."Profile ID" = 'QUALITY CONTROLLER COATINGS 85') OR 
+    //     (UserPersonalization."Profile ID" = 'PLANT MANAGER C85') OR 
+    //     (UserPersonalization."Profile ID" = 'ORDER PROCESSOR ACADIAN') OR 
+    //     (UserPersonalization."Profile ID" = 'ORDER PROCESSOR ACADIAN-ADMIN')) THEN
+    //       ERROR('You do not have permission to edit this field.');
+    // END;
+    // // << MC10.22
+
 }
