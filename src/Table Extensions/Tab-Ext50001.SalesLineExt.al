@@ -19,7 +19,6 @@ tableextension 50001 "Sales Line Ext" extends "Sales Line"
 
         field(50110; "No. Of Bins"; Integer)
         {
-            // Critical for Split Logic
         }
 
         field(50301; "EPC"; Boolean)
@@ -43,6 +42,17 @@ tableextension 50001 "Sales Line Ext" extends "Sales Line"
         {
             TableRelation = Facility."Plant Id";
             Editable = false;
+
+            trigger OnValidate()
+            var
+                SalesLine: Record "Sales Line";
+            begin
+                SalesLine.Reset();
+                SalesLine.SetRange(SalesLine."Document Type", Rec."Document Type");
+                SalesLine.SetRange(SalesLine."Document No.", Rec."No.");
+                if SalesLine.FindFirst then
+                    Error('Sales Line exists. You can not change the Plant Id.');
+            end;
         }
 
         field(50311; "Master SO No."; Code[20])
@@ -64,12 +74,12 @@ tableextension 50001 "Sales Line Ext" extends "Sales Line"
 
         field(50316; "Original Sales Line"; Integer)
         {
-            // Critical for Split Logic
+
         }
 
         field(50319; "Splitted Lines"; Boolean)
         {
-            // Critical for Split Logic
+
         }
 
         field(50321; "Original Bin Count"; Integer)
