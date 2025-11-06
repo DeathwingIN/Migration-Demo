@@ -26,7 +26,7 @@ tableextension 50103 "Sales Header Ext" extends "Sales header"
         field(50010; "Total Bin Count"; Integer)
         {
             FieldClass = FlowField;
-            //CalcFormula = sum("Sales Line"."No. of Bins");
+            CalcFormula = sum("Sales Line"."No. of Bins" WHERE("Document Type" = field("Document Type"), "Document No." = field("No.")));
             Editable = false;
         }
 
@@ -65,7 +65,8 @@ tableextension 50103 "Sales Header Ext" extends "Sales header"
         field(50027; "Mechanical Total Bin Count"; Integer)
         {
             FieldClass = FlowField;
-            //  CalcFormula = ''; // TODO: set CalcFormula
+            CalcFormula = Sum("Sales Line"."Mechanical No of Bins" WHERE("Document Type" = field("Document Type"), "Document No." = field("No.")));
+            Editable = false;
         }
 
         field(50028; "Ship-to Plant"; Code[10])
@@ -83,7 +84,7 @@ tableextension 50103 "Sales Header Ext" extends "Sales header"
 
         field(50032; "SO Created User ID"; Text[50])
         {
-            //  SetOnInsert = true;
+
         }
     }
 }
