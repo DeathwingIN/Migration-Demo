@@ -99,6 +99,58 @@ tableextension 50101 "Item Ext" extends item
                 // PlantHoldAccess; //TODO: Validation Related to UserPersonalization 
             end;
         }
+
+        field(50117; "Steel Type"; Code[10])
+        {
+            TableRelation = substrate."Substrate Code";
+        }
+
+        field(50118; "Sq Ins"; Decimal)
+        {
+            DecimalPlaces = 0 : 5;
+
+            trigger OnValidate()
+            begin
+                // IF InterPlantMgt.IsCoatings THEN
+                //  CalculatePCSPerBar;
+            end;
+        }
+
+        field(50119; "CLN"; Text[30])
+        {
+            // TableRelation=
+        }
+
+        field(50120; "Recipe No"; Text[30])
+        {
+        }
+
+        field(50121; "Pump Speed"; Integer)
+        {
+        }
+
+        field(50127; "Max Ecoat"; Decimal)
+        {
+            DecimalPlaces = 0 : 5;
+        }
+
+        field(50140; "Block Cr. Alt. Items"; Boolean)
+        {
+        }
+
+        field(50144; "Secs On"; Integer)
+        {
+        }
+
+        field(50145; "Secs Off"; Integer)
+        {
+        }
+
+        field(50151; "Transport $"; Decimal)
+        {
+            DecimalPlaces = 0 : 5;
+        }
+
     }
 
     // PlantHoldAccess()
