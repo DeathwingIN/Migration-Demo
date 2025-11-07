@@ -118,32 +118,49 @@ tableextension 50101 "Item Ext" extends item
 
         field(50119; "CLN"; Text[30])
         {
-            // TableRelation=
+            TableRelation = "Item Associates"."Text Value" where(Type = const(CLN));
         }
 
         field(50120; "Recipe No"; Text[30])
         {
+            TableRelation = "Item Associates"."Text Value" where(Type = const(RecipeNo));
         }
 
         field(50121; "Pump Speed"; Integer)
         {
+            TableRelation = "Item Associates"."Integer Value" where(Type = const(PumpSpeed));
         }
 
         field(50127; "Max Ecoat"; Decimal)
         {
             DecimalPlaces = 0 : 5;
+            trigger OnValidate()
+            begin
+                //  SupervisorOnlyField;
+            end;
         }
 
         field(50140; "Block Cr. Alt. Items"; Boolean)
         {
+            trigger OnValidate()
+            var
+                UserSetup: Record "User Setup";
+            begin
+                UserSetup.get(UserId);
+                UserSetup.TestField("Sales User", true);
+            end;
         }
 
         field(50144; "Secs On"; Integer)
         {
+            MinValue = 1;
+            MaxValue = 9999;
         }
 
         field(50145; "Secs Off"; Integer)
         {
+            MinValue = 1;
+            MaxValue = 9999;
         }
 
         field(50151; "Transport $"; Decimal)
@@ -166,5 +183,11 @@ tableextension 50101 "Item Ext" extends item
     //       ERROR('You do not have permission to edit this field.');
     // END;
     // // << MC10.22
+
+    //     LOCAL SupervisorOnlyField()
+    // //C85 [COATINGS]
+    // UserSetup.GET(USERID);
+    // //UserSetup.TESTFIELD(UserSetup.Supervisor);
+    // //C85 [COATINGS]
 
 }
