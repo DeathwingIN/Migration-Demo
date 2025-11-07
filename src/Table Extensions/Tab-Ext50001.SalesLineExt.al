@@ -74,12 +74,10 @@ tableextension 50001 "Sales Line Ext" extends "Sales Line"
 
         field(50316; "Original Sales Line"; Integer)
         {
-
         }
 
         field(50319; "Splitted Lines"; Boolean)
         {
-
         }
 
         field(50321; "Original Bin Count"; Integer)

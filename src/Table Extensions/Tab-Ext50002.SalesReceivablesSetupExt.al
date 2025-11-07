@@ -26,5 +26,12 @@ tableextension 50002 "Sales & Receivables Setup Ext" extends "Sales & Receivable
         {
             DecimalPlaces = 0 : 5;
         }
+
+        field(50015; "Bake Tag Header String"; Text[250])
+        {
+        }
+        field(50027; "NLBL File Location"; Text[250])
+        {
+        }
     }
 }
