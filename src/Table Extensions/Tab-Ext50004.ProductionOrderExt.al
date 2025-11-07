@@ -47,5 +47,26 @@ tableextension 50004 "Production Order Ext" extends "Production Order"
         {
             OptionMembers = Partial,Complete;
         }
+
+        field(50041; "Sequence"; Integer)
+        {
+            Caption = 'Sequence';
+
+            trigger OnValidate()
+            var
+                ProdOrderRoutingLine_gRec: Record "Prod. Order Routing Line";
+
+            begin
+                IF Sequence <> 0 THEN BEGIN
+                    ProdOrderRoutingLine_gRec.RESET;
+                    ProdOrderRoutingLine_gRec.SETRANGE("Prod. Order No.", "No.");
+                    IF ProdOrderRoutingLine_gRec.FINDSET THEN
+                        REPEAT
+                            ProdOrderRoutingLine_gRec.Sequence := Sequence;
+                            ProdOrderRoutingLine_gRec.MODIFY;
+                        UNTIL ProdOrderRoutingLine_gRec.NEXT = 0;
+                END;
+            end;
+        }
     }
 }
