@@ -84,7 +84,15 @@ tableextension 50103 "Sales Header Ext" extends "Sales header"
 
         field(50032; "SO Created User ID"; Text[50])
         {
+        }
+
+        field(50011; "For testing"; Boolean)
+        {
 
         }
+        field(50031; "Override Amount"; Boolean)
+        {
+        }
+
     }
 }
