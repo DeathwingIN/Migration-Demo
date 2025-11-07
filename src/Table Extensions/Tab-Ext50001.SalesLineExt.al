@@ -74,12 +74,10 @@ tableextension 50001 "Sales Line Ext" extends "Sales Line"
 
         field(50316; "Original Sales Line"; Integer)
         {
-
         }
 
         field(50319; "Splitted Lines"; Boolean)
         {
-
         }
 
         field(50321; "Original Bin Count"; Integer)
@@ -106,6 +104,44 @@ tableextension 50001 "Sales Line Ext" extends "Sales Line"
         field(50333; "Tooling Required"; Boolean)
         {
             Editable = true;
+        }
+
+        field(50280; "Min Charge"; Decimal)
+        {
+            DecimalPlaces = 0 : 5;
+        }
+
+        field(50290; "External Document No."; Code[35])
+        {
+        }
+
+        field(50315; "Packing Slip No."; Code[35])
+        {
+        }
+
+        field(50317; "Sales Order No."; Code[20])
+        {
+        }
+
+        field(50318; "Sales Line No."; Integer)
+        {
+        }
+
+        field(50324; "Force Delete"; Boolean)
+        {
+        }
+
+        field(50325; "Multi-Process Item"; Boolean)
+        {
+            Editable = false;
+        }
+
+        field(50326; "Separate Min. Charge"; Boolean)
+        {
+        }
+
+        field(50331; "IP Internal Processing Code"; Text[40])
+        {
         }
     }
 }
